@@ -1,4 +1,283 @@
-<hi>Hello World</hi>
-<p>welcome to my site</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Octavian Liviu Gherghe</title>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=IBM+Plex+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
 
-<p>this will slowly fill up with my work, but for now I appreciate your patience</p>
+/* ── reset ── */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+/* ── grain overlay ── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.038;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-size: 180px 180px;
+  background-repeat: repeat;
+}
+
+/* ── base ── */
+html {
+  background: #F4F1EC;
+  min-height: 100vh;
+}
+
+body {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 24px;
+  font-family: 'IBM Plex Mono', 'Courier New', monospace;
+  color: #1C1814;
+}
+
+/* ── typing phrase ── */
+.phrase-wrap {
+  height: 28px;
+  margin-bottom: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.phrase {
+  font-family: 'IM Fell English', Georgia, serif;
+  font-style: italic;
+  font-size: 15px;
+  color: #9E8E7A;
+  letter-spacing: 0.04em;
+  position: relative;
+}
+
+.phrase::after {
+  content: '|';
+  margin-left: 1px;
+  animation: blink 1s step-end infinite;
+  color: #C2B49E;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+/* ── main content ── */
+.centre {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+}
+
+/* name */
+.name {
+  font-family: 'IM Fell English', Georgia, serif;
+  font-size: clamp(28px, 5vw, 42px);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+  color: #1C1814;
+  margin-bottom: 8px;
+}
+
+.name em {
+  font-style: italic;
+  color: #3A6245;
+}
+
+/* discipline */
+.discipline {
+  font-size: 10px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: #B0A89E;
+  margin-bottom: 52px;
+}
+
+/* rule */
+.rule {
+  width: 40px;
+  height: 0.5px;
+  background: #C2B49E;
+  margin-bottom: 52px;
+}
+
+/* links */
+.links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: 52px;
+}
+
+.link-item {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  text-decoration: none;
+  color: #1C1814;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: color 0.2s;
+}
+
+.link-item:hover { color: #3A6245; }
+
+.link-item .arrow {
+  font-size: 10px;
+  color: #C2B49E;
+  transition: color 0.2s, transform 0.2s;
+  display: inline-block;
+}
+
+.link-item:hover .arrow {
+  color: #3A6245;
+  transform: translateX(3px);
+}
+
+/* currently block */
+.currently {
+  text-align: center;
+  max-width: 340px;
+}
+
+.currently-label {
+  font-size: 9px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #B0A89E;
+  margin-bottom: 14px;
+}
+
+.project-name {
+  font-family: 'IM Fell English', Georgia, serif;
+  font-size: 18px;
+  font-style: italic;
+  color: #1C1814;
+  margin-bottom: 6px;
+}
+
+.project-desc {
+  font-size: 10px;
+  line-height: 1.8;
+  color: #9E8E7A;
+  letter-spacing: 0.04em;
+}
+
+/* footer */
+footer {
+  position: fixed;
+  bottom: 28px;
+  left: 0; right: 0;
+  text-align: center;
+  font-size: 9px;
+  letter-spacing: 0.16em;
+  color: #C2B49E;
+  text-transform: uppercase;
+  z-index: 1;
+}
+
+/* ── responsive ── */
+@media (max-width: 480px) {
+  body { padding: 60px 20px; }
+  .phrase-wrap { margin-bottom: 40px; }
+  .rule { margin-bottom: 36px; }
+  .links { margin-bottom: 36px; }
+}
+
+</style>
+</head>
+<body>
+
+<!-- typing phrase -->
+<div class="phrase-wrap">
+  <span class="phrase" id="phrase"></span>
+</div>
+
+<!-- main -->
+<div class="centre">
+
+  <h1 class="name">Octavian <em>Liviu</em> Gherghe</h1>
+  <p class="discipline">Industrial Designer &nbsp;·&nbsp; Toronto</p>
+
+  <div class="rule"></div>
+
+  <nav class="links">
+    <a class="link-item" href="https://your-eportfolio-link-here.com" target="_blank" rel="noopener">
+      <span class="arrow">→</span> Portfolio
+    </a>
+    <a class="link-item" href="mailto:octavian.gherghe@gmail.com">
+      <span class="arrow">→</span> octavian.gherghe@gmail.com
+    </a>
+  </nav>
+
+  <div class="currently">
+    <p class="currently-label">Currently</p>
+    <p class="project-name">Subfloora</p>
+    <p class="project-desc">
+      A biophilic planter tower for Toronto's<br>
+      underground PATH network.<br>
+      GRADEX 2025 — OCAD University
+    </p>
+  </div>
+
+</div>
+
+<footer>thisisleavingyou</footer>
+
+<script>
+const phrases = [
+  "this is leaving you.",
+  "things disappear.",
+  "make it memorable.",
+  "industrial designer.",
+  "toronto, canada.",
+];
+
+let pi = 0, ci = 0, deleting = false, pauseTimer = null;
+const el = document.getElementById('phrase');
+
+function tick() {
+  const current = phrases[pi];
+
+  if (!deleting) {
+    el.textContent = current.slice(0, ci + 1);
+    ci++;
+    if (ci === current.length) {
+      deleting = true;
+      pauseTimer = setTimeout(tick, 2200);
+      return;
+    }
+    setTimeout(tick, 58);
+  } else {
+    el.textContent = current.slice(0, ci - 1);
+    ci--;
+    if (ci === 0) {
+      deleting = false;
+      pi = (pi + 1) % phrases.length;
+      setTimeout(tick, 400);
+      return;
+    }
+    setTimeout(tick, 32);
+  }
+}
+
+tick();
+</script>
+
+</body>
+</html>
