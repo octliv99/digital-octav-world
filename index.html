@@ -7,8 +7,6 @@
 <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=IBM+Plex+Mono:wght@300;400&display=swap" rel="stylesheet">
 <style>
 
- 
- 
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
  
 body::before {
@@ -180,6 +178,19 @@ footer {
   .rule { margin-bottom: 36px; }
   .links { margin-bottom: 36px; }
 }
+
+ .project-img {
+  display: block;
+  width: 100%;
+  max-width: 340px;
+  margin: 28px auto 0;
+  opacity: 0.88;
+  transition: opacity 0.3s;
+}
+
+.project-img:hover {
+  opacity: 1;
+}
  
 </style>
 </head>
@@ -204,14 +215,17 @@ footer {
     </a>
   </nav>
  
-  <div class="currently">
-    <p class="currently-label">current work</p>
+ <div class="currently">
+    <p class="currently-label">Currently</p>
     <p class="project-name">Subfloora</p>
     <p class="project-desc">
       A biophilic planter tower for Toronto's<br>
-      concentrated urban spaces.<br>
-      GRADEX 2026 — OCAD University
+      underground PATH network.<br>
+      GRADEX 2025 — OCAD University
     </p>
+    <a href="https://eportfolio.ocadu.ca/exhibitor/details/543c2b8b-970b-4c68-8804-b6059a3c1d84" target="_blank" rel="noopener">
+      <img src="subfloora.jpg" alt="Subfloora planter tower" class="project-img"/>
+    </a>
   </div>
  
 </div>
